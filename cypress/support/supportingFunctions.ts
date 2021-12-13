@@ -251,6 +251,24 @@ export const submitContactForm = (options?: {
   }
 };
 
+export const validateContactPageErrorsDisappear = (options?: {
+  forename?: boolean;
+  email?: boolean;
+  message?: boolean;
+}) => {
+  if (options) {
+    if (options.forename) {
+      cy.xpath(`${xpath_contactPage_forenameValidation}`).should(`not.exist`);
+    }
+    if (options.email) {
+      cy.xpath(`${xpath_contactPage_emptyEmailValidation}`).should(`not.exist`);
+    }
+    if (options.message) {
+      cy.xpath(`${xpath_contactPage_messageValidation}`).should(`not.exist`);
+    }
+  }
+};
+
 // **************************** Shop Page Specific Functions **************************** //
 /**
  * Will add the specified item into the cart
