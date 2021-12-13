@@ -98,6 +98,15 @@ const waitForShopPageToRender = () => {
   cy.xpath(`${xpath_shopPage_8stItem}`).should(`be.visible`);
 };
 
+/**
+ * Navigate to the cart page of the application.
+ * Note: This
+ */
+export const navigateToCartPage = () => {
+  cy.log(`**FUNCTION: navigateToCartPage()**`);
+  cy.xpath(`${xpath_topNavBar_cartButton}`).click();
+};
+
 // **************************** Contact Page Specific Functions **************************** //
 /**
  * Fill in the contact information. This function can also be used to validate the errors on the page. Therefore, all of the inputs are optional.
