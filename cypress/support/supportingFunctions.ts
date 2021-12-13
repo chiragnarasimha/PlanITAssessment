@@ -251,6 +251,13 @@ export const submitContactForm = (options?: {
   }
 };
 
+/**
+ * This will validate that the error messages disappear after the user enters data into the empty mandatory fields
+ * @param options The mandatory field that needs to be validated
+ * @param options.forename Validate that the error message for forename field has disappeared
+ * @param options.email Validate that the error message for email field has disappeared
+ * @param options.message Validate that the error message for message field has disappeared
+ */
 export const validateContactPageErrorsDisappear = (options?: {
   forename?: boolean;
   email?: boolean;

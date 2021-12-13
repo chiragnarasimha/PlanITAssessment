@@ -1,2 +1,11 @@
+[PlanITAssessment](#PlanITAssessment)
+
 # PlanITAssessment
-This is for the assessment for PlanIT Interview stuff
+
+This repository contains the test automation for the following test cases
+
+# Assessment
+
+The task is to
+
+[](https://)
