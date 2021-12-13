@@ -1,11 +1,32 @@
-[PlanITAssessment](#PlanITAssessment)
+# PlanIT Assessment
 
-# PlanITAssessment
+# Introduction
 
-This repository contains the test automation for the following test cases
+This repo contains the solution to all the PlanIT Pre-interview test automation questions. The solutions to these questions are provided in the cypress test automation framework. To verify that these solutions are working, please install cypress
 
-# Assessment
+# Prereq
 
-The task is to
+Please ensure that you have installed node on your computer. Although [Cypress website](https://docs.cypress.io/guides/getting-started/installing-cypress#System-requirements) says that it will work with versions of node that is 12 or 14 or above, it is recommended to install node v14.
 
-[](https://)
+# Getting Started
+
+1. Clone the repo onto your local machine
+2. Install all the node dependencies
+
+   ```
+   npm install
+   ```
+3. Run Cypress
+
+   ```
+   npm run cypress:open
+   ```
+
+# Running the tests
+
+1. If all the dependencies were installed successfully, the cypress window will open
+
+   ![CleanShot 2021-12-13 at 20.15.32.png](README_FILES/CleanShot_2021-12-13_at_20.15.32.png)
+2. Cypress should then open the web browser and start running the tests
+
+   ![CleanShot 2021-12-13 at 20.21.19.png](README_FILES/CleanShot_2021-12-13_at_20.21.19.png)
