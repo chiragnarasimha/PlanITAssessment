@@ -15,9 +15,11 @@ import {
   addItemToCart,
   fillInContactForm,
   loadApplication,
+  navigateToCartPage,
   navigateToContactPage,
   navigateToShopPage,
   submitContactForm,
+  verifyItemIsInCart,
 } from "../support/supportingFunctions";
 
 describe(`Check the validations on the contact page form`, () => {
@@ -91,9 +93,13 @@ describe(`Check the validations on the contact page form`, () => {
 describe(`Check the users are able view items in the cart`, () => {
   it.only(`test`, () => {
     loadApplication();
+    navigateToCartPage();
     navigateToShopPage();
     addItemToCart(`Funny Cow`);
     addItemToCart(`Funny Cow`);
     addItemToCart(`Fluffy Bunny`);
+    navigateToCartPage();
+    verifyItemIsInCart(`Funny Cow`, `2`);
+    verifyItemIsInCart(`Fluffy Bunny`, `1`);
   });
 });

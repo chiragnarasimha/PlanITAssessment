@@ -1,4 +1,7 @@
 import {
+  xpath_cartPage_checkOutButton,
+  xpath_cartPage_emptyCartButton,
+  xpath_cartPage_emptyCartMessage,
   xpath_contactPage_email,
   xpath_contactPage_emptyEmailValidation,
   xpath_contactPage_forename,
@@ -100,11 +103,34 @@ const waitForShopPageToRender = () => {
 
 /**
  * Navigate to the cart page of the application.
- * Note: This
  */
 export const navigateToCartPage = () => {
   cy.log(`**FUNCTION: navigateToCartPage()**`);
   cy.xpath(`${xpath_topNavBar_cartButton}`).click();
+
+  // Implicit wait for the page to render
+  waitForCartPageToRender();
+};
+
+const waitForCartPageToRender = () => {
+  // Implementing explicit wait
+  let numberOfItemsInCart = 0;
+  cy.wait(0).then(() => {
+    cy.xpath(`${xpath_topNavBar_cartItemCount}`)
+      .invoke(`text`)
+      .then(($JQueryVariable) => {
+        numberOfItemsInCart = parseInt($JQueryVariable);
+      });
+  });
+
+  cy.wait(0).then(() => {
+    if (numberOfItemsInCart === 0) {
+      cy.xpath(`${xpath_cartPage_emptyCartMessage}`).should(`be.visible`);
+    } else {
+      cy.xpath(`${xpath_cartPage_checkOutButton}`).should(`be.visible`);
+      cy.xpath(`${xpath_cartPage_emptyCartButton}`).should(`be.visible`);
+    }
+  });
 };
 
 // **************************** Contact Page Specific Functions **************************** //
@@ -227,8 +253,8 @@ export const submitContactForm = (options?: {
 
 // **************************** Shop Page Specific Functions **************************** //
 /**
- *
- * @param nameOfItem
+ * Will add the specified item into the cart
+ * @param nameOfItem Name of the item to add to the cart
  */
 export const addItemToCart = (nameOfItem: string) => {
   cy.log(`**FUNCTION: addItemToCart()**`);
@@ -255,4 +281,26 @@ export const addItemToCart = (nameOfItem: string) => {
         expect(parseInt($JQueryVariable)).to.equal(numberOfItemsInCart + 1);
       });
   });
+};
+
+// **************************** Cart Page Specific Functions **************************** //
+/**
+ * Will verify that the item specified is in the cart with the right quantity
+ * @param nameOfItem Name of the item that should be in the cart
+ * @param quantity Quantity that should be present in the cart
+ */
+export const verifyItemIsInCart = (nameOfItem: string, quantity: string) => {
+  cy.log(
+    `**FUNCTION: verifyItemIsInCart(** ${JSON.stringify({
+      nameOfItem,
+      quantity,
+    })} **)**`
+  );
+  let xpathOfItemInTable = `//td[contains(text(), "${nameOfItem}")]`;
+  cy.xpath(`${xpathOfItemInTable}`);
+  cy.xpath(`(${xpathOfItemInTable}//following::input)[1]`)
+    .invoke("val")
+    .then(($JQueryVariable) => {
+      expect($JQueryVariable).to.equal(quantity);
+    });
 };

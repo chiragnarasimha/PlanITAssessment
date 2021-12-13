@@ -28,3 +28,8 @@ export const xpath_contactPage_thanksMessage = `//div[@class="alert alert-succes
 // **************************** Shop Page **************************** //
 export const xpath_shopPage_1stItem = `(//li//img)[1]`;
 export const xpath_shopPage_8stItem = `(//li//img)[8]`;
+
+// **************************** Cart Page **************************** //
+export const xpath_cartPage_emptyCartMessage = `//strong[text()="Your cart is empty"]`;
+export const xpath_cartPage_checkOutButton = `//td//following::a[text()="Check Out"]`;
+export const xpath_cartPage_emptyCartButton = `//td//following::a[text()="Empty Cart"]`;
