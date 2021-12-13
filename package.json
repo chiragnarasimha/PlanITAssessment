@@ -1,0 +1,26 @@
+{
+  "name": "planitassessment",
+  "version": "1.0.0",
+  "description": "This is to write all the test cases for PlanIt Assessment",
+  "main": "index.js",
+  "scripts": {
+    "cypress:open": "./node_modules/.bin/cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chiragnarasimha/PlanITAssessment.git"
+  },
+  "author": "Chirag Narasimha Murthy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chiragnarasimha/PlanITAssessment/issues"
+  },
+  "homepage": "https://github.com/chiragnarasimha/PlanITAssessment#readme",
+  "devDependencies": {
+    "cypress": "^9.1.1",
+    "cypress-xpath": "^1.6.2",
+    "prettier": "2.5.1",
+    "typescript": "^4.5.3"
+  },
+  "dependencies": {}
+}
